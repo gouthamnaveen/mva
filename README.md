@@ -30,7 +30,7 @@ The observed data corresponding to the hindcast. Kindly maintain the shape of th
 
 The forecast (or test) data. Kindly maintain the shape of the array as (time,ensemble-members,grid-points).
 
-_Note-I_: Kindly respect the array shapes even if the computation is done for one time/grid point/ensemble member.
+_Note_: Kindly respect the array shapes even if the computation is done for one time/grid point/ensemble member.
 
 ## _Methods:_
 
@@ -40,7 +40,7 @@ This method adjusts the bias of the hindcast samples using leave-one-out approac
 
 _Returns_:
 
-bias_adjusted_hindcast (Note: It has the same shape as that of the original hindcast data)
+bias_adjusted_hindcast (Note: It has the same shape as that of the hindcast)
 
 **adjust_forecast()**:
 
@@ -48,7 +48,7 @@ This method adjusts the bias of the forecast using hindcast data. This method wo
 
 _Returns_:
 
-bias_adjusted_forecast (Note: It has the same shape as that of the original forecast data)
+bias_adjusted_forecast (Note: It has the same shape as that of the forecast)
 
 ## _Demonstration:_
 
