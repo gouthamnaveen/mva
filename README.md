@@ -40,7 +40,7 @@ This method adjusts the bias of the hindcast samples using leave-one-out approac
 
 _Returns_:
 
-bias_adjusted_hindcast (Note: It has the same shape as that of the hindcast)
+bias_adjusted_hindcast (Note: It has the same shape as the hindcast)
 
 **adjust_forecast()**:
 
@@ -48,7 +48,7 @@ This method adjusts the bias of the forecast using hindcast data. This method wo
 
 _Returns_:
 
-bias_adjusted_forecast (Note: It has the same shape as that of the forecast)
+bias_adjusted_forecast (Note: It has the same shape as the forecast)
 
 ## _Demonstration:_
 
