@@ -22,9 +22,9 @@ pip install mva
 
 The hindcast (or training) data. Kindly maintain the shape of the array as (years/samples,time,ensemble-members,grid-points).
 
-**truth_hindcast**: numpy.ndarray
+**observation**: numpy.ndarray
 
-The observed data corresponding to the hindcast. Kindly maintain the shape of the array as (years/samples,time,grid-points).
+The truth or observations corresponding to the hindcast. Kindly maintain the shape of the array as (years/samples,time,grid-points).
     
 **forecast**: numpy.ndarray, optional
 
@@ -36,7 +36,7 @@ _Note_: Kindly respect the array shapes even if the computation is done for one 
 
 **adjust_hindcast()**:
 
-This method adjusts the bias of the hindcast samples using leave-one-out approach.
+This method corrects the bias of the hindcast using hindcast of the remaining years in the set (i.e., leave-one-out approach) and the corresponding observations.
 
 _Returns_:
 
@@ -44,7 +44,7 @@ bias_adjusted_hindcast (Note: It has the same shape as the hindcast)
 
 **adjust_forecast()**:
 
-This method adjusts the bias of the forecast using hindcast data. This method works only when the forecast parameter is given.
+This method corrects the bias of the forecast using hindcast and the corresponding observations. This method works only when the forecast parameter is given.
 
 _Returns_:
 
@@ -56,21 +56,21 @@ bias_adjusted_forecast (Note: It has the same shape as the forecast)
 import numpy as np
 import mva.mva as mva
 ```
+Let's imagine that we have loaded the data of hindcast, forecast, and observation.
 
-Example - 1
+Example
 ```sh
-In [1]: pscore(np.random.uniform(2,5,50),3.5).compute()
-Out[1]: (0.24374216742963792, 0.2332762342590258, 0.23589271755167882)
+In [1]: hcast.shape
+Out[1]: (20,46,10,6)
+In [2]: fcast.shape
+Out[2]: (46,50,6)
+In [3]: obs.shape
+Out[3]: (20,46,6)
+In [4]: bc = mva(hcast,obs,fcast)
+In [5]: ad_hcast = bc.adjust_hindcast()
+In [6]: ad_hcast.shape
+Out[6]: (20,46,10,6)
+In [7]: ad_fcast = bc.adjust_forecast()
+In [8]: ad_fcast.shape
+Out[8]: (46,50,6)
 ```
-
-Example - 2
-```sh
-In [2]: crps,fcrps,acrps = pscore(np.random.uniform(1.2,7,100),8.3,50).compute()
-In [3]: crps
-Out[3]: 3.11890267263096
-In [4]: fcrps
-Out[4]: 3.109573704801023
-In [5]: acrps
-Out[5]: 3.129164537243891
-```
-
