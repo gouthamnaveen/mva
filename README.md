@@ -58,7 +58,7 @@ import mva.mva as mva
 ```
 Let's imagine that we have loaded the data of hindcast, forecast, and observation.
 
-Example
+Example - 1
 ```sh
 In [1]: hcast.shape
 Out[1]: (20,46,10,6)
@@ -73,4 +73,19 @@ Out[6]: (20,46,10,6)
 In [7]: ad_fcast = bc.adjust_forecast()
 In [8]: ad_fcast.shape
 Out[8]: (46,50,6)
+```
+
+Example - 2
+```sh
+In [1]: hcast.shape
+Out[1]: (20,46,10,6)
+In [2]: fcast.shape
+Out[2]: (48,50,6)
+In [3]: obs.shape
+Out[3]: (20,46,6)
+In [4]: ad_hcast = mva(hcast,obs,fcast).adjust_hindcast()
+In [5]: ad_hcast.shape
+Out[5]: (20,46,10,6)
+In [6]: ad_fcast = mva(hcast,obs,fcast).adjust_forecast()
+Out[6]: Please respect the array shapes and try again!
 ```
