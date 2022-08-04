@@ -2,8 +2,6 @@
 
 A python package to adjust the bias of probabilistic forecasts/hindcasts using "Mean and Variance Adjustment" method.
 
-Read documentation at [https://github.com/garovent/mva](https://github.com/garovent/mva)
-
 _References_:
 
 [1] Torralba, V., Doblas-Reyes, F. J., MacLeod, D., Christel, I. & Davis, M. Seasonal Climate Prediction: A New Source of Information for the Management of Wind Energy Resources. Journal of Applied Meteorology and Climatology 56, 1231–1247 (2017).
